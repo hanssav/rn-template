@@ -18,9 +18,10 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import ScreenWrapper from '@/components/ui/screen-wrapper';
 import { Text } from '@/components/ui/text';
 import { useState } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { Alert, View } from 'react-native';
 
 export default function TestScreen() {
   const [name, setName] = useState('');
@@ -28,7 +29,7 @@ export default function TestScreen() {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <ScrollView className="flex-1 bg-background">
+    <ScreenWrapper>
       <View className="p-6 gap-6">
         {/* Header */}
         <View className="items-center py-4">
@@ -257,6 +258,6 @@ export default function TestScreen() {
 
         <View className="h-8" />
       </View>
-    </ScrollView>
+    </ScreenWrapper>
   );
 }

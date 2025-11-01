@@ -1,22 +1,26 @@
-import { Button } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
 import { useRouter } from 'expo-router';
-import { Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 
 export default function Index() {
   const router = useRouter();
 
-  return (
-    <View className="flex-1 justify-center items-center gap-4">
-      <Text className="font-bold text-3xl text-blue-700">
-        Welcome in NativeWind!
-      </Text>
-      <Button onPress={() => alert('Button Pressed!')}>
-        <Text className="text-white">Click Me</Text>
-      </Button>
+  useEffect(() => {
+    // Auto redirect ke home setelah 1 detik (atau langsung)
+    const timer = setTimeout(() => {
+      router.replace('/(tabs)/home');
+    }, 100); // Hapus delay ini jika mau langsung redirect
 
-      <Button onPress={() => router.push('/test')}>
-        <Text className="text-white">View Component Tests</Text>
-      </Button>
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <View className="flex-1 justify-center items-center bg-background">
+      <Text className="font-bold text-3xl text-blue-700 mb-4">
+        RN Boilerplate
+      </Text>
+      <ActivityIndicator size="large" color="#3b82f6" />
     </View>
   );
 }
