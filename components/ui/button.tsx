@@ -57,7 +57,7 @@ export const Button = React.forwardRef<
 >(
   (
     { children, variant, size, radius, className, textClassName, ...props },
-    ref
+    ref,
   ) => {
     return (
       <TouchableOpacity
@@ -83,21 +83,21 @@ export const Button = React.forwardRef<
                   <Text
                     className={cn(
                       buttonTextVariants({ variant }),
-                      textClassName
+                      textClassName,
                     )}
                   >
                     {child}
                   </Text>
                 ) : (
                   child
-                )
+                ),
               )}
             </>
           )
         ) : null}
       </TouchableOpacity>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';
