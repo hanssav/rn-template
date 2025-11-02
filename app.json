@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "rn-boilerplate",
-    "slug": "rn-boilerplate",
+    "name": "rn-movie-apps",
+    "slug": "rn-movie-apps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "rnboilerplate", // change with actual app scheme, exp: movies, todos, ecommerce, etc
+    "scheme": "movies", // change with actual app scheme, exp: movies, todos, ecommerce, etc
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
