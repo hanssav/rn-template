@@ -33,17 +33,6 @@ export function ThemeProvider({
 
     // Apply the theme
     colorScheme.set(effectiveTheme);
-
-    // Force a re-render by toggling the theme
-    const forceUpdate = () => {
-      colorScheme.set('light');
-      setTimeout(() => {
-        colorScheme.set(effectiveTheme);
-      }, 0);
-    };
-
-    // Force update to ensure theme is applied
-    forceUpdate();
   }, [theme, systemColorScheme]);
 
   const value = {

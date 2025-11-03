@@ -11,18 +11,21 @@ import { Switch } from '@/components/ui/switch';
 import { Text } from '@/components/ui/text';
 import { useTheme } from '@/lib/theme-provider';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { useColorScheme, View } from 'react-native';
 
 export default function SettingsScreen() {
   const [notifications, setNotifications] = useState(true);
   const [autoPlay, setAutoPlay] = useState(true);
-
   const { theme, setTheme } = useTheme();
+  const systemColorScheme = useColorScheme();
 
   const toggleTheme = () => {
-    setTheme(
-      theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system',
-    );
+    // Jika system, ambil actual theme yang sedang aktif
+    const currentEffectiveTheme =
+      theme === 'system' ? systemColorScheme || 'light' : theme;
+
+    // Toggle berdasarkan effective theme
+    setTheme(currentEffectiveTheme === 'light' ? 'dark' : 'light');
   };
 
   return (
@@ -81,7 +84,10 @@ export default function SettingsScreen() {
                 </Text>
               </View>
               <Switch
-                checked={theme === 'dark'}
+                checked={
+                  theme === 'dark' ||
+                  (theme === 'system' && systemColorScheme === 'dark')
+                }
                 onCheckedChange={toggleTheme}
                 id="dark-mode"
                 nativeID="dark-mode"
